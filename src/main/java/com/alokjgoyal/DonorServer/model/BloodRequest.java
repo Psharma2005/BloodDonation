@@ -9,14 +9,42 @@ import java.util.UUID;
 @Document(value = "donor_request")
 public class BloodRequest {
 
+   // User user = new User();
+
     @Id
     private UUID id;
     private String blood_group;
     private int blood_quantity;
     private String location;
+
+    @Override
+    public String toString() {
+        return "BloodRequest{" +
+                "id=" + id +
+                ", blood_group='" + blood_group + '\'' +
+                ", blood_quantity=" + blood_quantity +
+                ", location='" + location + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitudes='" + longitudes + '\'' +
+                ", requested_date='" + requested_date + '\'' +
+                ", user_id=" + user_id +
+                '}';
+    }
+
     private String latitude;
     private String longitudes;
     private String requested_date;
+    private UUID user_id;
+
+    public UUID getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(UUID user_id) {
+        this.user_id = user_id;
+    }
+
+
 
     public UUID getId() {
         return id;
