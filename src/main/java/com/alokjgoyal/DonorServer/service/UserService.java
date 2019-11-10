@@ -5,9 +5,8 @@ import com.alokjgoyal.DonorServer.repository.UserRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.*;
 
-import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -32,5 +31,20 @@ public class UserService {
     public Optional<User> userExists(String email)
     {
         return userRepository.findUserByEmail(email);
+    }
+
+    public Optional<User> userExists(UUID user_id)
+    {
+        return userRepository.findById(user_id);
+    }
+
+    public void updateUser(User user)
+    {
+        userRepository.save(user);
+    }
+
+    public List<User> getAllUsers()
+    {
+        return userRepository.findAll();
     }
 }

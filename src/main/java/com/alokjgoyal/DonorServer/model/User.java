@@ -10,12 +10,41 @@ public class User {
 
     @Id
     private UUID id;
+
     private String first_name;
     private String last_name;
     private String gender;
     private String blood_group;
     private String phone_no;
     private String email;
+    private String address;
+    private String password;
+    private String longitude;
+    private String latitude;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
     public String getPassword() {
         return password;
@@ -24,8 +53,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private String password;
 
     public UUID getId() {
         return id;
@@ -93,6 +120,10 @@ public class User {
                 ", blood_group='" + blood_group + '\'' +
                 ", phone_no='" + phone_no + '\'' +
                 ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
                 '}';
     }
 
