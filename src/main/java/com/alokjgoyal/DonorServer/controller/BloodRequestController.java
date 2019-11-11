@@ -62,7 +62,7 @@ public class BloodRequestController {
         List<BloodRequest> request = requestService.getAllUserRequests(UUID.fromString(user_id));
 
         if (!request.isEmpty()) {
-            response.put("Status", true);
+            response.put("status", true);
             response.put("requests", requestService.getAllUserRequests(UUID.fromString(user_id)));
             response.put("message", "Request info Fetched");
         } else {
@@ -73,10 +73,18 @@ public class BloodRequestController {
     }
 
 
-    @PutMapping("/requests/update/{id}")
+    @PutMapping(value = "/requests/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String updateRequest(@PathVariable("id") UUID id, @RequestBody BloodRequest request) {
         request.setId(id);
-        requestService.updateRequest(request);
-        return "Request Updated";
+
+        JSONObject response = new JSONObject();
+        BloodRequest req = requestService.updateRequest(request);
+
+        response.put("status", true);
+        response.put("request_id", req.getId());
+        response.put("message", "Request info Fetched");
+
+
+        return response.toString();
     }
 }
