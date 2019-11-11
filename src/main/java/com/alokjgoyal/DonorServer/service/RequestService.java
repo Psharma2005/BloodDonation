@@ -21,7 +21,7 @@ public class RequestService {
     RequestRepository requestRepository;
 
 
-    public String addDonorRequest(@RequestBody BloodRequest request) {
+    public BloodRequest addDonorRequest(@RequestBody BloodRequest request) {
 
         UUID id = UUID.randomUUID();
         request.setId(id);
@@ -30,9 +30,8 @@ public class RequestService {
 
         request.setRequested_date(today);
         requestRepository.save(request);
-        return "Donor Request saved with ID: " + id;
+        return request;
     }
-
 
     public List<BloodRequest> getAllRequests() {
         return requestRepository.findAll();
