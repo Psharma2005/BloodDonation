@@ -16,6 +16,19 @@ public class BloodRequest {
     private String blood_group;
     private int blood_quantity;
     private String location;
+    private String latitude;
+    private String longitudes;
+    private String requested_date;
+    public UUID user_id;
+    private int fulfilled_quantity;
+
+    public int getFulfilled_quantity() {
+        return fulfilled_quantity;
+    }
+
+    public void setFulfilled_quantity(int fulfilled_quantity) {
+        this.fulfilled_quantity = fulfilled_quantity;
+    }
 
     @Override
     public String toString() {
@@ -30,11 +43,6 @@ public class BloodRequest {
                 ", user_id=" + user_id +
                 '}';
     }
-
-    private String latitude;
-    private String longitudes;
-    private String requested_date;
-    private UUID user_id;
 
     public UUID getUser_id() {
         return user_id;

@@ -45,4 +45,9 @@ public class RequestService {
         requestRepository.save(request);
         return request;
     }
+
+    public List<BloodRequest> getAllUserRequests(UUID user_id)
+    {
+        return requestRepository.findAllByUser_id(user_id);
+    }
 }
