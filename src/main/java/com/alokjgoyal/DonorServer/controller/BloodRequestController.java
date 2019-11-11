@@ -19,7 +19,7 @@ public class BloodRequestController {
     @Autowired
     RequestService requestService;
 
-    @PostMapping(value = "/requests/addRequest", produces = "text/plain")
+    @PostMapping(value = "/requests/addRequest", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String addRequest(@RequestBody BloodRequest request) {
 
