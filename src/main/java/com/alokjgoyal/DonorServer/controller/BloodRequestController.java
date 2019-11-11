@@ -73,7 +73,7 @@ public class BloodRequestController {
     }
 
 
-    @PutMapping(value = "/requests/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/requests/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String updateRequest(@PathVariable("id") UUID id, @RequestBody BloodRequest request) {
         request.setId(id);
 
@@ -82,7 +82,7 @@ public class BloodRequestController {
 
         response.put("status", true);
         response.put("request_id", req.getId());
-        response.put("message", "Request info Fetched");
+        response.put("message", "Request info Updated");
 
 
         return response.toString();
