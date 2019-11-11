@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-//  requestService.addDonorRequest(request);
 
 @RestController
 public class BloodRequestController {
@@ -56,14 +55,28 @@ public class BloodRequestController {
         return response.toString();
     }
 
+    @GetMapping(value = "/requests/user/{user_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getDataByUserId(@PathVariable("user_id") String user_id) {
+        JSONObject response = new JSONObject();
 
-    @PutMapping("/requests/edit/{id}")
-    public String editRequest(@PathVariable("id") UUID id, @RequestBody BloodRequest request) {
+        List<BloodRequest> request = requestService.getAllUserRequests(UUID.fromString(user_id));
 
+        if (!request.isEmpty()) {
+            response.put("Status", true);
+            response.put("requests", requestService.getAllUserRequests(UUID.fromString(user_id)));
+            response.put("message", "Request info Fetched");
+        } else {
+            response.put("status", false);
+            response.put("message", "Request not found");
+        }
+        return response.toString();
+    }
+
+
+    @PutMapping("/requests/update/{id}")
+    public String updateRequest(@PathVariable("id") UUID id, @RequestBody BloodRequest request) {
         request.setId(id);
         requestService.updateRequest(request);
         return "Request Updated";
     }
-
 }
-
