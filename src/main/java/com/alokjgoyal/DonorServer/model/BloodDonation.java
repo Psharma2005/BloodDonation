@@ -6,7 +6,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.UUID;
 
 @Document(collection = "blood_donations")
+
 public class BloodDonation {
+
+    public enum Status
+    {
+        OPEN, CLOSED, COMPLETED, CANCELLED};
 
     @Id
     private UUID id;
@@ -20,8 +25,17 @@ public class BloodDonation {
     private String donation_address;
     private String longitude;
     private String latitude;
-    private boolean is_complete;
+//    private boolean is_complete;
+    private String status;
     private UUID request_id;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public UUID getId() {
         return id;
@@ -103,13 +117,13 @@ public class BloodDonation {
         this.latitude = latitude;
     }
 
-    public boolean isIs_complete() {
-        return is_complete;
-    }
-
-    public void setIs_complete(boolean is_complete) {
-        this.is_complete = is_complete;
-    }
+//    public boolean isIs_complete() {
+//        return is_complete;
+//    }
+//
+//    public void setIs_complete(boolean is_complete) {
+//        this.is_complete = is_complete;
+//    }
 
     public UUID getRequest_id() {
         return request_id;
@@ -132,7 +146,7 @@ public class BloodDonation {
                 ", donation_address='" + donation_address + '\'' +
                 ", longitude='" + longitude + '\'' +
                 ", latitude='" + latitude + '\'' +
-                ", is_complete=" + is_complete +
+//                ", is_complete=" + is_complete +
                 ", request_id=" + request_id +
                 '}';
     }
