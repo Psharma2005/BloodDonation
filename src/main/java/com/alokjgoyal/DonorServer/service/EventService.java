@@ -18,12 +18,8 @@ public class EventService {
 
     public String addEvent(@RequestBody DonationEvent event) {
 
-        UUID id = event.getId();
-        if(id == null)
-        {
-            id = UUID.randomUUID();
-            event.setId(id);
-        }
+        UUID id = UUID.randomUUID();
+        event.setId(id);
         eventRepository.save(event);
         return "Event saved with ID: " + id;
     }
