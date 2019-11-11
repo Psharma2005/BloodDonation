@@ -10,8 +10,11 @@
 			"item": [
 				{
 					"name": "addEvent",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -22,7 +25,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"event_name\" : \"Event 2\",\n\t\"date\" : \"12 Oct 2019\",\n\t\"address\" : \"xyz location, CA\",\n\t\"location\": \"1243, 4356\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -30,13 +33,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/events/addEvent",
+							"raw": "{{base_url}}/requests/all",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"events",
-								"addEvent"
+								"requests",
+								"all"
 							]
 						}
 					},
@@ -252,6 +255,277 @@
 								"{{base_url}}"
 							],
 							"path": [
+								"user",
+								"445399af-307f-417f-bed1-54a62391d233"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Donations",
+			"item": [
+				{
+					"name": "donation create/ acceptance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"blood_group\" : \"O+\",\n\t\"blood_qty\" : \"1\",\n\t\"user_id\" : \"445399af-307f-417f-bed1-54a62391d233\",\n\t\"donation_date\" : \"2019-10-30 13:00:00\",\n\t\"gender\" : \"M\",\n\t\"age\" : \"20\",\n\t\"donation_address\" : \"XYZ Hospital\",\n\t\"longitude\" : \"70\",\n\t\"latitude\" : \"60\",\n\t\"request_id\" : \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/donation/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"donation",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "donation status update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\" : \"COMPLETED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/donation/update_status/281ec96d-5517-4532-8e64-75fa38bab563",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"donation",
+								"update_status",
+								"281ec96d-5517-4532-8e64-75fa38bab563"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Donations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\" : \"COMPLETED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/donation/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"donation",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All Donations By UserID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\" : \"COMPLETED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/donation/user/445399af-307f-417f-bed1-54a62391d233",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"donation",
+								"user",
+								"445399af-307f-417f-bed1-54a62391d233"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Blood Request",
+			"item": [
+				{
+					"name": "addRequest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"blood_group\": \"B\",\n\t\"blood_quantity\": 1,\n\t\"location\": \"San Jose, CA\",\n\t\"latitude\": \"-10\",\n\t\"longitudes\": \"25\",\n\t\"user_id\": \"445399af-307f-417f-bed1-54a62391d233\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/requests/addRequest",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"requests",
+								"addRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRequests All Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/requests/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"requests",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRequestById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/requests/view/4548d9d9-f52e-4933-b26a-0a14542c7bad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"requests",
+								"view",
+								"4548d9d9-f52e-4933-b26a-0a14542c7bad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRequests",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\n        \"id\": \"98291d01-4d65-4fa0-9f75-a871418ff25f\",\n        \"blood_group\": \"C\",\n        \"blood_quantity\": 1,\n        \"location\": \"San Jose, CA\",\n        \"latitude\": \"-11\",\n        \"longitudes\": \"25\",\n        \"requested_date\": \"Sunday, 10-11-2019, 05:49:05.068 PM\",\n        \"user_id\": \"445399af-307f-417f-bed1-54a62391d233\",\n        \"fulfilled_quantity\": 1\n    }"
+						},
+						"url": {
+							"raw": "{{base_url}}/requests/update/4548d9d9-f52e-4933-b26a-0a14542c7bad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"requests",
+								"update",
+								"4548d9d9-f52e-4933-b26a-0a14542c7bad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRequestByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/requests/user/445399af-307f-417f-bed1-54a62391d233",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"requests",
 								"user",
 								"445399af-307f-417f-bed1-54a62391d233"
 							]
