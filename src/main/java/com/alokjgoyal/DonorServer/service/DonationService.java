@@ -1,8 +1,6 @@
 package com.alokjgoyal.DonorServer.service;
 
 import com.alokjgoyal.DonorServer.model.BloodDonation;
-import com.alokjgoyal.DonorServer.model.BloodDonation;
-import com.alokjgoyal.DonorServer.model.User;
 import com.alokjgoyal.DonorServer.repository.DonationRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +16,7 @@ public class DonationService {
     @Autowired
     DonationRepository donationRepository;
 
-    public BloodDonation addDonationAppointment(JSONObject donation_data)
-    {
+    public BloodDonation addDonationAppointment(JSONObject donation_data) {
         BloodDonation bloodDonation = new BloodDonation();
         bloodDonation.setId(UUID.randomUUID());
 
@@ -36,13 +33,10 @@ public class DonationService {
 //        bloodDonation.setIs_complete(false);
         bloodDonation.setRequest_id(null);
 
-        if(donation_data.getString("request_id").trim().equals(""))
-        {
+        if (donation_data.getString("request_id").trim().equals("")) {
             System.out.println("Value is null");
             bloodDonation.setRequest_id(null);
-        }
-        else
-        {
+        } else {
             bloodDonation.setRequest_id(UUID.fromString(donation_data.getString("request_id")));
         }
 
@@ -50,23 +44,19 @@ public class DonationService {
         return bloodDonation;
     }
 
-    public Optional<BloodDonation> getBloodDonationRequestById(UUID id)
-    {
+    public Optional<BloodDonation> getBloodDonationRequestById(UUID id) {
         return donationRepository.findById(id);
     }
 
-    public void updateDonation(BloodDonation donation)
-    {
+    public void updateDonation(BloodDonation donation) {
         donationRepository.save(donation);
     }
 
-    public List<BloodDonation> getAllBloodDonations()
-    {
+    public List<BloodDonation> getAllBloodDonations() {
         return donationRepository.findAll();
     }
 
-    public List<BloodDonation> getAllBloodDonationsByUserId(UUID user_id)
-    {
+    public List<BloodDonation> getAllBloodDonationsByUserId(UUID user_id) {
         return donationRepository.findAllByUserId(user_id);
     }
 

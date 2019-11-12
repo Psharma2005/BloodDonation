@@ -9,8 +9,6 @@ import java.util.UUID;
 @Document(value = "donor_request")
 public class BloodRequest {
 
-   // User user = new User();
-
     @Id
     private UUID id;
     private String blood_group;
@@ -19,8 +17,17 @@ public class BloodRequest {
     private String latitude;
     private String longitudes;
     private String requested_date;
-    public UUID user_id;
     private int fulfilled_quantity;
+    private String status;
+    public UUID user_id;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getFulfilled_quantity() {
         return fulfilled_quantity;
@@ -51,8 +58,6 @@ public class BloodRequest {
     public void setUser_id(UUID user_id) {
         this.user_id = user_id;
     }
-
-
 
     public UUID getId() {
         return id;
@@ -108,5 +113,9 @@ public class BloodRequest {
 
     public void setRequested_date(String requested_date) {
         this.requested_date = requested_date;
+    }
+
+    public enum Status {
+        OPEN, CLOSED, COMPLETED, CANCELLED
     }
 }
