@@ -28,13 +28,18 @@ public class RequestService {
         Format formatter = new SimpleDateFormat("EEEE, dd-MM-yyyy, hh:mm:ss.SSS a");
         String today = formatter.format(new Date());
 
+        request.setStatus(BloodRequest.Status.OPEN.toString());
         request.setRequested_date(today);
         requestRepository.save(request);
         return request;
     }
 
     public List<BloodRequest> getAllRequests() {
-        return requestRepository.findAll();
+        return requestRepository.findByStatus(BloodRequest.Status.OPEN.toString());
+    }
+
+    public List<BloodRequest> getRequestsWithStatus(){
+        return requestRepository.findByStatus("OPEN");
     }
 
     public Optional<BloodRequest> getDonorRequestById(UUID id) {
@@ -46,8 +51,7 @@ public class RequestService {
         return request;
     }
 
-    public List<BloodRequest> getAllUserRequests(UUID user_id)
-    {
+    public List<BloodRequest> getAllUserRequests(UUID user_id) {
         return requestRepository.findAllByUser_id(user_id);
     }
 }

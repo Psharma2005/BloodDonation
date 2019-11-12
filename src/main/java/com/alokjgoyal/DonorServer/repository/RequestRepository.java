@@ -13,4 +13,8 @@ public interface RequestRepository extends MongoRepository<BloodRequest, UUID> {
 
     @Query("{ 'user_id' : ?0 }")
      List<BloodRequest> findAllByUser_id(UUID user_id);
+
+    @Query("{ 'status' : ?0 }")
+    List<BloodRequest> findByStatus(String status);
+
 }
