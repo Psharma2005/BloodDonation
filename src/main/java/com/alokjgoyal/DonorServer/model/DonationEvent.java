@@ -13,6 +13,8 @@ public class DonationEvent {
 
     private String event_name;
     private String date;
+    private String address;
+    private String location;
 
     public UUID getId() {
         return id;
@@ -53,8 +55,5 @@ public class DonationEvent {
     public void setLocation(String location) {
         this.location = location;
     }
-
-    private String address;
-    private String location;
 
 }
