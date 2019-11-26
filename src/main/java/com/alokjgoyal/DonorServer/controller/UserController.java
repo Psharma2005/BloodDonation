@@ -23,7 +23,7 @@ public class UserController {
         JSONObject user_data = new JSONObject(user_info);
         JSONObject response = new JSONObject();
 
-        UUID user_id = UUID.fromString(user_data.get("user_id").toString());
+        UUID user_id = UUID.fromString(user_data.get("id").toString());
         Optional<User> user = userService.userExists(user_id);
         if(user.isPresent())
         {
